@@ -1,5 +1,6 @@
-node('wallmart-node'){
+node('master'){
 
+def mavenHome = tool name: "maven3.9.4"
 
 //echo "GitHub BranhName ${env.BRANCH_NAME}"
   //echo "Jenkins Job Number ${env.BUILD_NUMBER}"
@@ -9,15 +10,12 @@ node('wallmart-node'){
   echo "Jenkins URL ${env.JENKINS_URL}"
   echo "JOB Name ${env.JOB_NAME}"
   
-  
-def mavenHome = tool name: "maven3.8.3"
-
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
 
 
 
 stage('CheckOutCode'){
-git branch: 'development', credentialsId: '9aad10da-e742-413a-a2f6-ce6a8b007f70', url: 'https://github.com/MithunTechnologiesDevOps/maven-web-application.git'
+git credentialsId: '0aa2c2d3-2bd7-4afe-80e3-8a2864b8d174', url: 'https://github.com/mss-ec-apps-test-1/maven-web-application.git'
 }
 
 stage('Build'){
