@@ -1,4 +1,4 @@
-node('wallmart-node'){
+node('deveploment'){
 
 
 //echo "GitHub BranhName ${env.BRANCH_NAME}"
@@ -10,7 +10,7 @@ node('wallmart-node'){
   echo "JOB Name ${env.JOB_NAME}"
   
   
-def mavenHome = tool name: "maven3.8.3"
+def mavenHome = tool name: "maven3.9.4"
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
 
